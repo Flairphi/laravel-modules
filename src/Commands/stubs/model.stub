@@ -1,0 +1,36 @@
+<?php
+
+namespace $NAMESPACE$;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+$UUID_TRAIT_NAMESPACE$;
+
+class $CLASS$ extends Model
+{
+    /**
+     * Traits used in model
+     */
+    use SoftDeletes$UUID_TRAIT_NAME$;
+
+    /**
+     * Mass assignable fields
+     * @var array
+     */
+    protected $fillable = $FILLABLE$;
+
+    /**
+     * Model table
+     * @var string
+     */
+    protected $table = "$TABLE_NAME$";
+
+    /**
+     * Model primary key
+     * @var string
+     */
+    protected $primaryKey = "$PRIMARY_KEY$";
+
+    $INCREMENTING$
+
+}

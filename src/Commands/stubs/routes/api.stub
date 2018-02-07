@@ -1,0 +1,9 @@
+<?php
+
+Route::group(['middleware'  => 'api',
+              'prefix'      => 'api/$LOWER_NAME$',
+              'namespace'   => '$MODULE_NAMESPACE$\$STUDLY_NAME$\Http\Controllers',
+              'as'          => '$LOWER_NAME$::api.'],
+function(){
+    Route::get('/', '$STUDLY_NAME$Controller@index')->name('index');
+});

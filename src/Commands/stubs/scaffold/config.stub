@@ -1,0 +1,6 @@
+<?php
+
+return [
+    'name' => '$STUDLY_NAME$',
+    'type' => '$MODULE_TYPE$'
+];

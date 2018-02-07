@@ -1,0 +1,9 @@
+<?php
+
+namespace $CLASS_NAMESPACE$;
+
+use Flairphi\LaravelModules\Routing\Controller;
+
+class $CLASS$ extends Controller
+{
+}
