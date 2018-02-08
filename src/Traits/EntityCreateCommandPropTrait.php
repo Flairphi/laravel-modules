@@ -2,8 +2,15 @@
 
 namespace Flairphi\LaravelModules\Traits;
 
-trait EntityCreateCommandPropTrait {
 
+/**
+ * Trait EntityCreateCommandPropTrait
+ * @package Flairphi\LaravelModules\Traits
+ */
+
+trait EntityCreateCommandPropTrait
+{
+    use ResourceNamingTrait;
 
     /**
      * @var Collection
@@ -24,7 +31,8 @@ trait EntityCreateCommandPropTrait {
      * @param bool $prefixed
      * @return $this
      */
-    protected function isPrefixed($prefixed = false ){
+    protected function isPrefixed($prefixed = false )
+    {
 
        $this->shouldHaveModulePrefix = ($prefixed) ? $prefixed : app('modules')->config('generator.models.module_prefix');
 
@@ -37,7 +45,7 @@ trait EntityCreateCommandPropTrait {
      */
     protected function tableIs($tableName){
 
-        $this->table = $tableName;
+        $this->table = $this->makeCleanTableName($tableName);
 
         return $this;
     }
@@ -58,8 +66,9 @@ trait EntityCreateCommandPropTrait {
     /**
      * @return string
      */
-    protected function getPrefixedTableName(): string {
-        return $this->module->getLowerName()."__".$this->table;
+    protected function getPrefixedTableName(): string
+    {
+        return $this->module->getLowerName()."___".$this->table;
     }
 
     /**
@@ -73,21 +82,24 @@ trait EntityCreateCommandPropTrait {
     /**
      * @return mixed
      */
-    protected function getUuidPrimaryKeyName(){
+    protected function getUuidPrimaryKeyName()
+    {
         return app('modules')->config('generator.models.primary_key');
     }
 
     /**
      * @return mixed
      */
-    protected  function getBinaryUuidTraitNamespace(){
+    protected  function getBinaryUuidTraitNamespace()
+    {
         return app('modules')->config('generator.models.trait_namespace');
     }
 
     /**
      * @return mixed
      */
-    protected  function getBinaryUuidTraitName(){
+    protected  function getBinaryUuidTraitName()
+    {
         return app('modules')->config('generator.models.trait_name');
     }
 

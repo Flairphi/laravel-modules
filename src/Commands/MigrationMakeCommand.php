@@ -140,7 +140,7 @@ class MigrationMakeCommand extends GeneratorCommand
      */
     private function getFileName()
     {
-        return date('Y_m_d_His_') . $this->getSchemaName();
+        return date('Y_m_d_His_') . $this->makeCleanMigrationFileName($this->getSchemaName());
     }
 
     /**
@@ -156,7 +156,9 @@ class MigrationMakeCommand extends GeneratorCommand
      */
     private function getClassName()
     {
-        return Str::studly($this->argument('name'));
+        $className = Str::studly($this->argument('name'));
+
+        return $this->makeCleanMigrationClassName($className);
     }
 
     public function getClass()

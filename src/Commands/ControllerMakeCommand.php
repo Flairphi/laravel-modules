@@ -5,12 +5,14 @@ namespace Flairphi\LaravelModules\Commands;
 use Flairphi\LaravelModules\Support\Config\GenerateConfigReader;
 use Flairphi\LaravelModules\Support\Stub;
 use Flairphi\LaravelModules\Traits\ModuleCommandTrait;
+
+use Flairphi\LaravelModules\Traits\ResourceNamingTrait;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
 class ControllerMakeCommand extends GeneratorCommand
 {
-    use ModuleCommandTrait;
+    use ModuleCommandTrait, ResourceNamingTrait;
 
     /**
      * The name of argument being used.
@@ -59,7 +61,7 @@ class ControllerMakeCommand extends GeneratorCommand
             'CONTROLLERNAME'    => $this->getControllerName(),
             'NAMESPACE'         => $module->getStudlyName(),
             'CLASS_NAMESPACE'   => $this->getClassNamespace($module),
-            'CLASS'             => $this->getControllerName(),
+            'CLASS'             => $this->makeCleanClassName($this->getControllerName()),
             'LOWER_NAME'        => $module->getLowerName(),
             'MODULE'            => $this->getModuleName(),
             'NAME'              => $this->getModuleName(),
